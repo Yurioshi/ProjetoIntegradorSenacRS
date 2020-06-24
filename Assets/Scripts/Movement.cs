@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         character = GetComponent<Character>();
     }
 
