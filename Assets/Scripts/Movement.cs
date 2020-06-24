@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
         character = GetComponent<Character>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
