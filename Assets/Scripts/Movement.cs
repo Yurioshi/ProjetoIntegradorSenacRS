@@ -6,8 +6,6 @@ public class Movement : MonoBehaviour
 {
     public Character character;
     public Vector3 direction;
-    public Transform cam;
-    private readonly float turnSmoothTime = 0.2f;
 
     private void Awake()
     {
@@ -15,14 +13,12 @@ public class Movement : MonoBehaviour
         character = GetComponent<Character>();
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         float hor = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
 
         direction = new Vector3(hor, 0f, ver);
-
-        Rotate();
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -61,14 +57,5 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Rotate()
-    {
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        float angle = Quaternion.Slerp(Quaternion.Euler(0f, transform.eulerAngles.y, 0f), Quaternion.Euler(0f, targetAngle, 0f), turnSmoothTime).eulerAngles.y;
-        Vector3 moveDir = new Vector3 (0f, angle, 0f);
-        if (direction.magnitude > 0f && !character.isPicking)
-        {
-            transform.eulerAngles = moveDir;
-        }
-    }
+    
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Unequip : MonoBehaviour
 {
     public Character character;
-
+    
     private void Awake()
     {
         character = GetComponent<Character>();
@@ -21,14 +21,14 @@ public class Unequip : MonoBehaviour
 
     public void UnequipWeapon()
     {
-        if (character.isHolding && !character.isPicking)
+        if (character.isHolding && !character.isPicking && character.attackingAnimDone)
         {
             character.currentWeapon.transform.parent = null;
             character.currentWeapon.AddRB();
             character.currentWeapon.PickUpCollider(true);
             character.currentWeapon = null;
-            character.anim.SetBool("IsHolding", false);
             character.isHolding = false;
+            character.anim.SetBool("IsHolding", false);
             Debug.Log("Terminou de desequipar");
         }
     }

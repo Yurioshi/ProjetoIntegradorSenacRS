@@ -11,4 +11,6 @@ public class Character : MonoBehaviour
     public bool isAttacking = false;
     public bool isHolding = false;
     public bool isPicking = false;
+
+    public bool attackingAnimDone = true;
 }
