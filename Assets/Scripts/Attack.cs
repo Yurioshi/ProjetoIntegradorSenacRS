@@ -18,19 +18,21 @@ public class Attack : MonoBehaviour
             if(character.isHolding && !character.isAttacking && !character.isPicking)
             {
                 character.anim.SetTrigger("Attack");
+                character.anim.SetBool("IsAttacking", true);
             }
         }
     }
 
-    private void Attacking()
+    public void Attacking()
     {
         character.isAttacking = true;
         character.currentWeapon.attackCollider.enabled = true;
     }
 
-    private void NotAttacking()
+    public void NotAttacking()
     {
         character.isAttacking = false;
+        character.anim.SetBool("IsAttacking", false);
         character.currentWeapon.attackCollider.enabled = false;
     }
 }
