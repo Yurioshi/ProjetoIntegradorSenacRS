@@ -11,31 +11,25 @@ public class FieldOfView : MonoBehaviour
 	public LayerMask targetMask;
 	public LayerMask obstacleMask;
 
-	EnemyCotroller enemyCotroller;
+	EnemyController enemyCotroller;
 
     void Awake()
     {
-		enemyCotroller = GetComponent<EnemyCotroller>();
+		enemyCotroller = GetComponent<EnemyController>();
 	}
 
     void Start()
 	{
-		StartCoroutine("FindTargetsWithDelay", .2f);
+		StartCoroutine(FindTargetsWithDelay());
 	}
 
-	IEnumerator FindTargetsWithDelay(float delay)
+	IEnumerator FindTargetsWithDelay()
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(delay);
+			yield return new WaitForEndOfFrame();
 			FindVisibleTargets();
 		}
-	}
-
-	IEnumerator ForgetTargetWithDelay(float delay)
-    {
-		yield return new WaitForSeconds(delay);
-		GetComponent<EnemyCotroller>().playerPosition = null;
 	}
 
 	void FindVisibleTargets()

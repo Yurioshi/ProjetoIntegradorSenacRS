@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyCotroller : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public Animator enemyAnim;
     public Transform playerPosition;
@@ -28,40 +28,6 @@ public class EnemyCotroller : MonoBehaviour
 
         enemyAnim.SetBool("IsIdle", !isChasing);
         enemyAnim.SetBool("IsChasing", isChasing);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            StartAttackPlayer();
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            SetAttackState(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            SetAttackState(false);
-        }
-    }
-
-    public void StartAttackPlayer()
-    {
-        enemyAnim.SetTrigger("Attack");
-    }
-
-    public void SetAttackState(bool attackState)
-    {
-        enemyAnim.SetBool("IsAttacking", attackState);
     }
 
     public void ChasePlayer()

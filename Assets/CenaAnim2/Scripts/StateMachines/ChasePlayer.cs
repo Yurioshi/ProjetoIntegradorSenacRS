@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class ChasePlayer : StateMachineBehaviour
 {
-    EnemyCotroller enemyController;
+    EnemyController enemyController;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyController = animator.gameObject.GetComponent<EnemyCotroller>();
+        enemyController = animator.gameObject.GetComponent<EnemyController>();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

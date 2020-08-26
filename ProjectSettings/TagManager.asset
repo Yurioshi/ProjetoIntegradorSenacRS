@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weapon
   - EnemyHitBox
+  - Spawn
   layers:
   - Default
   - TransparentFX

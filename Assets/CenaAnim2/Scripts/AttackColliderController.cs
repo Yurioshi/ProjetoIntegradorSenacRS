@@ -43,7 +43,6 @@ public class AttackColliderController : MonoBehaviour
         {
             enemyHealth.LoseHealth(weapon.damage);
             canDamage = false;
-
         }
     }
 
